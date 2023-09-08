@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hata!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .centered-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            height: auto;
+            padding: 20px;
+        }
+        .error-message {
+            text-align: center;
+            font-size: 18px;
+            color: #e74c3c;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.zoidata.com/assets/img/logo.png" alt="Logo" class="centered-image">
+    <p class="error-message">{{ error_message }}</p>
+    <p class="error-message">Klasör: {{ path }}</p>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container img {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        .container form {
+            margin-top: 20px;
+        }
+
+        .image-container {
+            display: inline-block;
+        }
+
+        .image-container img {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .image-container input[type="checkbox"] {
+        }
+
+        .image-container input[type="checkbox"]:checked + img {
+            border: 2px solid #4CAF50;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.zoidata.com/assets/img/logo.png" alt="Logo">
+    <h1>{{ folder_header }}</h1>
+    {% if selected_image %}
+        <div class="container">
+            <form method="post" action="/">
+                <div class="image-container">
+                    <img src="{{ selected_image }}" onclick="toggleCheckbox(this)">
+                    <input type="hidden" name="selected_image" value="{{ selected_image }}">
+                </div>
+                <br>
+                {% for image in other_images %}
+                    <div class="image-container">
+                        <img src="{{ image }}" onclick="toggleCheckbox(this)">
+                        <input type="checkbox" name="selected_image" value="{{ image }}">
+                    </div>
+                {% endfor %}
+                <br>
+                <input type="hidden" name="folder_name" value="{{ folder_name }}">
+                <input type="submit" value="Sonraki Resimler">
+            </form>
+        </div>
+        <script>
+            function toggleCheckbox(imgElement) {
+                var checkbox = imgElement.nextElementSibling;
+                checkbox.checked = !checkbox.checked;
+            }
+        </script>
+    {% else %}
+        <p style="text-align: center;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
