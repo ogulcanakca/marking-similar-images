@@ -150,8 +150,8 @@ def get_subfolder_names(directory):
             subfolder_names.append(item)
     
     return subfolder_names
-subfolder_names = get_subfolder_names('/app/static')
-'''subfolder_names = get_subfolder_names(static_folder)'''
+subfolder_names = get_subfolder_names('/app/static') 
+'''subfolder_names = get_subfolder_names(static_folder)''' # If the system will run without Containerization
 
 def extract_file_names(selected_images):
     extracted_file_names = []
